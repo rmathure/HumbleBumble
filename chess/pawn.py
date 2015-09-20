@@ -1,5 +1,4 @@
 
-import abc
 from piece import Piece
 from board import Board
 
@@ -12,13 +11,13 @@ class Pawn(Piece):
         self.set_color(color)
         self.set_position(posx, posy)
         self.__moves__ = list()
-        self.get_board().register_to_set(self, self.get_color())
+        self.get_board().register_to_set(self)
 
     def set_color(self, color):
         self.__color__ = color.upper()
 
     def set_position(self, posx, posy):
-        posx, posy = self.get_board().convert_pos_to_array(posx, posy)
+        posx, posy = self.get_board().convert_pos_to_array(posx, int(posy))
         self.__posx__ = posx
         self.__posy__ = posy
 
@@ -52,6 +51,9 @@ class Pawn(Piece):
         else:
             self.__moves__.append(self._get_x_offset_moves_(1))
         return self._literal_form_possible_moves_()
+
+    def get_moves(self):
+        return self.__moves__
 
     def _literal_form_possible_moves_(self):
         moves_list = list()
