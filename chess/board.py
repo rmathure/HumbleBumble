@@ -1,4 +1,4 @@
-from exceptions import InvalidInputException, ChessTileOccupiedException
+from exceptions import InvalidInputException, ChessTileOccupiedException, PieceColorNotImplemented
 
 class Board(object):
     def __init__(self):
@@ -8,6 +8,7 @@ class Board(object):
 
     def convert_pos_to_array(self, posx, posy):
         posx = ord(posx.upper()) - 65
+        posy = int(posy)
         posy -= 1
         if not self.is_within_bounds(posx, posy):
             raise InvalidInputException("Invalid value for position x or y")
@@ -18,7 +19,7 @@ class Board(object):
             raise InvalidInputException("Invalid value for position x or y")
         posx = chr(x + 65)
         posy = y + 1
-        return posx, posy
+        return posx + str(posy)
 
     def get_pieceAt(self, x, y):
         if not self.is_within_bounds(x, y):
@@ -36,6 +37,8 @@ class Board(object):
             self.black_set.add(piece)
         elif piece.get_color().upper() == "WHITE":
             self.white_set.add(piece)
+        else:
+            raise PieceColorNotImplemented("Color " + piece.get_color() + " is not defined.")
         posx, posy = piece.get_posx(), piece.get_posy()
         if self.__board__[posx][posy] is not None:
             raise ChessTileOccupiedException("Tile " + posx + "," + posy + " already occupied")

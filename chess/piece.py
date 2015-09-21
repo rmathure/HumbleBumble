@@ -21,19 +21,19 @@ class Piece(object):
     def get_color(self):
         pass
 
-    def set_color(self):
+    def set_color(self, color):
         pass
 
     def get_position(self):
         pass
 
-    def set_position(self):
+    def set_position(self, posx, posy):
         pass
 
     def set_board(self):
         pass
 
-    def get_board(self):
+    def get_board(self, board):
         pass
 
     color = abc.abstractproperty(get_color, set_color)

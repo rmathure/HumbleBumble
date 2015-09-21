@@ -40,16 +40,16 @@ class Pawn(Piece):
         self.__board__ = board
 
     def __hash__(self):
-        return "_".join(["pawn", str(self.__posx__), str(self.__posy__)])
+        return hash("_".join(["pawn", str(self.__posx__), str(self.__posy__)]))
 
     def __eq__(self, other):
         return self.__hash__() ==  other.__hash__()
 
     def get_possible_moves(self):
         if self._is_first_move_():
-            self.__moves__.append(self._get_x_offset_moves_(2))
+            self.__moves__.extend(self._get_x_offset_moves_(2))
         else:
-            self.__moves__.append(self._get_x_offset_moves_(1))
+            self.__moves__.extend(self._get_x_offset_moves_(1))
         return self._literal_form_possible_moves_()
 
     def get_moves(self):
@@ -58,8 +58,8 @@ class Pawn(Piece):
     def _literal_form_possible_moves_(self):
         moves_list = list()
         for move in self.__moves__:
-            moves_list.append("Pawn at " + self.get_position() +
-                              " can move to " + self.get_board().convert_array_to_pos(move[0], move[1]))
+            moves_list.append("Pawn at " + self.get_position() + " can move to " +
+                              self.get_board().convert_array_to_pos(move[0], move[1]))
         return moves_list
 
     def _get_multiplier_(self):
@@ -107,4 +107,9 @@ class Pawn(Piece):
             return self.get_posy() == 1
         elif self.get_color() == "BLACK":
             return self.get_posy() == 7
+
+    board = property(get_board, set_board)
+    color = property(get_color, set_color)
+    position = property(get_color, set_color)
+
 
