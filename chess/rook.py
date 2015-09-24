@@ -42,7 +42,7 @@ class Rook(Piece):
         self.__board__ = board
 
     def __hash__(self):
-        return hash("_".join(["knight", str(self.__posx__), str(self.__posy__)]))
+        return hash("_".join(["rook", str(self.__posx__), str(self.__posy__)]))
 
     def __eq__(self, other):
         return self.__hash__() ==  other.__hash__()

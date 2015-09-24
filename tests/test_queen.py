@@ -3,6 +3,7 @@ from chess.queen import Queen
 from chess.board import Board
 from chess.pawn import Pawn
 
+
 class TestQueenBase(unittest.TestCase):
     def setUp(self):
         self.board = Board()
@@ -35,6 +36,7 @@ class TestQueenBase(unittest.TestCase):
         self.assertIn((6,1), self.queen.__moves__)
         self.assertIn((7,1), self.queen.__moves__)
 
+
 class TestQueenBlock(unittest.TestCase):
     def setUp(self):
         self.board = Board()
@@ -56,6 +58,7 @@ class TestQueenBlock(unittest.TestCase):
         self.assertIn((6,1), self.queen.__moves__)
         self.assertIn((7,1), self.queen.__moves__)
         self.assertIn((0,1), self.queen.__moves__)
+
 
 class TestQueenAttack(unittest.TestCase):
     def setUp(self):
