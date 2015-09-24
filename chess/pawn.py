@@ -86,10 +86,9 @@ class Pawn(Piece):
         return moves_list
 
     def _check_for_attack_move_(self, tempx, tempy):
-        multiplier = self._get_multiplier_()
         moves_list = list()
         for attackx in [tempx + 1, tempx -1]:
-            attacky = tempy #+ multiplier
+            attacky = tempy
             if self.get_board().get_pieceAt(attackx, attacky) is not None:
                 if self.get_board().get_pieceAt(attackx, attacky).get_color() != self.get_color():
                     moves_list.append((attackx, attacky))

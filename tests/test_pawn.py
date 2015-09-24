@@ -14,6 +14,7 @@ class TestPawnInit(unittest.TestCase):
         self.assertTrue(pawn in self.board.white_set)
         self.assertFalse(pawn in self.board.black_set)
 
+
 class TestPawnSingleMove(unittest.TestCase):
     def setUp(self):
         self.board = Board()
@@ -34,6 +35,7 @@ class TestDoubleMove(unittest.TestCase):
         self.board = Board()
         self.pawn = Pawn(self.board, 'b', '2', 'white')
         self.black_pawn = Pawn(self.board, 'b', '7', 'black')
+
     def test_double_step_move(self):
         result = self.pawn.get_possible_moves()
         self.assertIn((1,2), self.pawn.__moves__)
@@ -79,7 +81,7 @@ class TestAttackSteps(unittest.TestCase):
         self.another_black_pawn = Pawn(self.board, 'b', '3', 'black')
         self.test_black_pawn = Pawn(self.board, 'b', '7', 'black')
         self.attack_white_pawn= Pawn(self.board, 'c', '6', 'white')
-        self.another_attack_white_pawn = Pawn (self.board, 'c', '5', 'white')
+        self.another_attack_white_pawn = Pawn(self.board, 'c', '5', 'white')
 
     def test_white_moves(self):
         result = self.pawn.get_possible_moves()
