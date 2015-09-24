@@ -3,6 +3,7 @@ from piece import Piece
 from horizontal_moving_piece import get_horizontal_moves
 from vertical_moving_piece import get_vertical_moves
 
+
 class Rook(Piece):
     def __init__(self, board, posx, posy, color):
         self.__color__ = None
