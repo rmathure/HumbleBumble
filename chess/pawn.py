@@ -106,7 +106,7 @@ class Pawn(Piece):
         if self.get_color() == "WHITE":
             return self.get_posy() == 1
         elif self.get_color() == "BLACK":
-            return self.get_posy() == 7
+            return self.get_posy() == 6
 
     board = property(get_board, set_board)
     color = property(get_color, set_color)

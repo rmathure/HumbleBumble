@@ -28,6 +28,19 @@ class TestPawnSingleMove(unittest.TestCase):
         self.assertIn((1,1,), self.black_pawn.__moves__)
         self.assertIn("Pawn at B3 can move to B2", result)
 
-class TestDoubleMove(unittest.TestCase):
+class TestDoubleMoveWhite(unittest.TestCase):
+    def setUp(self):
+        self.board = Board()
+        self.pawn = Pawn(self.board, 'b', '2', 'white')
+        self.black_pawn = Pawn(self.board, 'b', '7', 'black')
     def test_double_step_move(self):
-        pass
+        result = self.pawn.get_possible_moves()
+        self.assertIn((1,2), self.pawn.__moves__)
+        self.assertIn((1,3), self.pawn.__moves__)
+        self.assertIn("Pawn at B2 can move to B3", result)
+        self.assertIn("Pawn at B2 can move to B4", result)
+        result = self.black_pawn.get_possible_moves()
+        self.assertIn((1,5), self.black_pawn.__moves__)
+        self.assertIn((1,4), self.black_pawn.__moves__)
+        self.assertIn("Pawn at B7 can move to B6", result)
+        self.assertIn("Pawn at B7 can move to B5", result)
