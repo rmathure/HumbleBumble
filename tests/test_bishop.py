@@ -1,4 +1,3 @@
-__author__ = 'rohanmathure'
 
 import unittest
 from chess.bishop import Bishop
