@@ -77,18 +77,11 @@ class Pawn(Piece):
             if tempy < 0 or tempy > 7:
                 continue
             if self.get_board().get_pieceAt(tempx, tempy) is not None:
-                if self.get_board().get_pieceAt(tempx, tempy).get_color() == self.get_color():
-                    break
-                else:
-                    moves_list.append((tempx, tempy))
-                    moves_made += 1
-                    if moves_made < places_to_move:
-                        moves_list.extend(self._check_for_attack_move_(tempx, tempy))
-                    break
+                break
             else:
                 moves_list.append((tempx, tempy))
                 moves_made += 1
-                if moves_made < places_to_move:
+                if moves_made <= places_to_move:
                     moves_list.extend(self._check_for_attack_move_(tempx, tempy))
         return moves_list
 
@@ -96,7 +89,7 @@ class Pawn(Piece):
         multiplier = self._get_multiplier_()
         moves_list = list()
         for attackx in [tempx + 1, tempx -1]:
-            attacky = tempy + multiplier
+            attacky = tempy #+ multiplier
             if self.get_board().get_pieceAt(attackx, attacky) is not None:
                 if self.get_board().get_pieceAt(attackx, attacky).get_color() != self.get_color():
                     moves_list.append((attackx, attacky))
