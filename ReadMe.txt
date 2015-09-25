@@ -16,7 +16,9 @@ The first line should specify the color of the player who is to play.
 
 The following lines should be # delimited lines of piece name, position, color of the piece
 
-e.g. pawn#b4#white - This means we have white pawn at b4
+e.g. pawn#b4#white - This means we have white pawn at b4.
+
+A sample input file is created in teh project directory.
 =======================================================================================
 To run the test suite:
 
