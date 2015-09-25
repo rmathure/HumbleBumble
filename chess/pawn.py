@@ -74,7 +74,7 @@ class Pawn(Piece):
         multiplier = self._get_multiplier_()
         for x in range(1,places_to_move+1):
             tempx, tempy = self.get_posx(), self.get_posy() + (multiplier*x)
-            if tempy < 0 or tempy > 7:
+            if not self.board.is_within_bounds(tempx, tempy):
                 continue
             if self.get_board().get_pieceAt(tempx, tempy) is not None:
                 break
@@ -89,6 +89,8 @@ class Pawn(Piece):
         moves_list = list()
         for attackx in [tempx + 1, tempx -1]:
             attacky = tempy
+            if not self.board.is_within_bounds(attackx, attacky):
+                continue
             if self.get_board().get_pieceAt(attackx, attacky) is not None:
                 if self.get_board().get_pieceAt(attackx, attacky).get_color() != self.get_color():
                     moves_list.append((attackx, attacky))

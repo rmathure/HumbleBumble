@@ -24,10 +24,10 @@ class TestPawnSingleMove(unittest.TestCase):
     def test_single_possible_move(self):
         result = self.pawn.get_possible_moves()
         self.assertIn((2, 5), self.pawn.__moves__)
-        self.assertIn("Pawn at C5 can move to C6", result)
+        self.assertIn("Pawn at <C:5> can move to <C:6>", result)
         result = self.black_pawn.get_possible_moves()
         self.assertIn((1,1,), self.black_pawn.__moves__)
-        self.assertIn("Pawn at B3 can move to B2", result)
+        self.assertIn("Pawn at <B:3> can move to <B:2>", result)
 
 
 class TestDoubleMove(unittest.TestCase):
@@ -40,13 +40,13 @@ class TestDoubleMove(unittest.TestCase):
         result = self.pawn.get_possible_moves()
         self.assertIn((1,2), self.pawn.__moves__)
         self.assertIn((1,3), self.pawn.__moves__)
-        self.assertIn("Pawn at B2 can move to B3", result)
-        self.assertIn("Pawn at B2 can move to B4", result)
+        self.assertIn("Pawn at <B:2> can move to <B:3>", result)
+        self.assertIn("Pawn at <B:2> can move to <B:4>", result)
         result = self.black_pawn.get_possible_moves()
         self.assertIn((1,5), self.black_pawn.__moves__)
         self.assertIn((1,4), self.black_pawn.__moves__)
-        self.assertIn("Pawn at B7 can move to B6", result)
-        self.assertIn("Pawn at B7 can move to B5", result)
+        self.assertIn("Pawn at <B:7> can move to <B:6>", result)
+        self.assertIn("Pawn at <B:7> can move to <B:5>", result)
 
 
 class TestBlockedSteps(unittest.TestCase):

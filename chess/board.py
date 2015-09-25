@@ -20,7 +20,7 @@ class Board(object):
             raise InvalidInputException("Invalid value for position x or y:" + str(x) + "," + str(y))
         posx = chr(x + 65)
         posy = y + 1
-        return posx + str(posy)
+        return self.format_position(posx + str(posy))
 
     def get_pieceAt(self, x, y):
         if not self.is_within_bounds(x, y):
@@ -45,21 +45,27 @@ class Board(object):
             raise ChessTileOccupiedException("Tile " + str(posx) + "," + str(posy) + " already occupied")
         self.__board__[posx][posy] = piece
 
-    def _print_moves_for_set_(self, color_set):
+    def _print_moves_for_set_(self, color_set, color):
         moves_list = list()
+        piece_set = set()
         for piece in color_set:
             for move in piece.get_possible_moves():
                 print move
                 moves_list.append(move)
+                piece_set.add(piece)
+        print "{0} legal moves ({1} unique pieces) for {2} player".format(len(moves_list), len(piece_set), color)
         return moves_list
 
 
     def get_possible_moves(self, color):
         if color.upper() == 'WHITE':
-            return self._print_moves_for_set_(self.white_set)
+            return self._print_moves_for_set_(self.white_set, color)
         elif color.upper() == 'BLACK':
-            return self._print_moves_for_set_(self.black_set)
+            return self._print_moves_for_set_(self.black_set, color)
         else:
             raise PieceColorNotImplemented(color + " is not yet implemented.")
+
+    def format_position(self, position):
+        return "<" + position[0] + ":" + position[1] + ">"
 
 

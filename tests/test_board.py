@@ -25,7 +25,7 @@ class TestBoard(unittest.TestCase):
         self.assertRaises(InvalidInputException, lambda: self.board.convert_pos_to_array('i', 0))
 
     def test_convert_array_to_pos(self):
-        self.assertEqual(self.board.convert_array_to_pos(2, 3), 'C4')
+        self.assertEqual(self.board.convert_array_to_pos(2, 3), '<C:4>')
         self.assertRaises(InvalidInputException, lambda: self.board.convert_array_to_pos(0, 8))
         self.assertRaises(InvalidInputException, lambda: self.board.convert_array_to_pos(-1, 8))
         self.assertRaises(InvalidInputException, lambda: self.board.convert_array_to_pos(-1, 9))
