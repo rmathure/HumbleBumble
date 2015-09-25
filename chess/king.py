@@ -60,6 +60,8 @@ class King(Piece):
         moves_list = list()
         tempx = posx + offsetx
         tempy = posy + offsety
+        if not self.board.is_within_bounds(tempx, tempy):
+            return moves_list
         if self.board.get_pieceAt(tempx, tempy) is not None:
             if self.board.get_pieceAt(tempx, tempy).get_color() != self.get_color():
                 moves_list.append((tempx, tempy))
@@ -73,6 +75,8 @@ class King(Piece):
             for y in [-1, 1]:
                 tempx = posx + x
                 tempy = posy + y
+                if not self.board.is_within_bounds(tempx, tempy):
+                    continue
                 if self.board.get_pieceAt(tempx, tempy) is not None:
                     if self.board.get_pieceAt(tempx, tempy).get_color() != self.get_color():
                         moves_list.append((tempx, tempy))

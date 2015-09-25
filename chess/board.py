@@ -1,5 +1,6 @@
 from exceptions import InvalidInputException, ChessTileOccupiedException, PieceColorNotImplemented
 
+
 class Board(object):
     def __init__(self):
         self.__board__ = [[None for i in xrange(8)] for j in xrange(8)]
@@ -16,7 +17,7 @@ class Board(object):
 
     def convert_array_to_pos(self, x, y):
         if not self.is_within_bounds(x, y):
-            raise InvalidInputException("Invalid value for position x or y")
+            raise InvalidInputException("Invalid value for position x or y:" + str(x) + "," + str(y))
         posx = chr(x + 65)
         posy = y + 1
         return posx + str(posy)
@@ -41,7 +42,24 @@ class Board(object):
             raise PieceColorNotImplemented("Color " + piece.get_color() + " is not defined.")
         posx, posy = piece.get_posx(), piece.get_posy()
         if self.__board__[posx][posy] is not None:
-            raise ChessTileOccupiedException("Tile " + posx + "," + posy + " already occupied")
+            raise ChessTileOccupiedException("Tile " + str(posx) + "," + str(posy) + " already occupied")
         self.__board__[posx][posy] = piece
+
+    def _print_moves_for_set_(self, color_set):
+        moves_list = list()
+        for piece in color_set:
+            for move in piece.get_possible_moves():
+                print move
+                moves_list.append(move)
+        return moves_list
+
+
+    def get_possible_moves(self, color):
+        if color.upper() == 'WHITE':
+            return self._print_moves_for_set_(self.white_set)
+        elif color.upper() == 'BLACK':
+            return self._print_moves_for_set_(self.black_set)
+        else:
+            raise PieceColorNotImplemented(color + " is not yet implemented.")
 
 

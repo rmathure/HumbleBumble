@@ -21,6 +21,7 @@ class TestKingBase(unittest.TestCase):
         self.assertIn((2,1), self.king.__moves__)
         self.assertIn((2,2), self.king.__moves__)
 
+
 class TestKingBlock(unittest.TestCase):
     def setUp(self):
         self.board = Board()
