@@ -1,0 +1,4 @@
+white
+pawn#b3#white
+pawn#c4#white
+queen#d5#white

@@ -1,4 +1,22 @@
+The position of pieces needs to specified during instantiation as well as their color.
 
+The position should be specified as 'b', '4' which means that a piece is positioned at B4.
+
+e.g. piece = Pawn(boardObject, 'b', '4', 'white') # where white is the color of the piece
+
+The above statement should initialize a white pawn at b4.
+The board Object should be initialized and passed as a parameter for every piece constructor.
+
+======================================================================================
+
+Alternative method to specify the chess board configuration:
+
+Create input.txt file in Humblebundle project directory.
+The first line should specify the color of the player who is to play.
+
+The following lines should be # delimited lines of piece name, position, color of the piece
+
+e.g. pawn#b4#white - This means we have white pawn at b4
 =======================================================================================
 To run the test suite:
 
@@ -35,15 +53,4 @@ Ran 29 tests in 0.008s
 OK
 
 Process finished with exit code 0
-======================================================================================
-
-The position of pieces needs to specified during instantiation as well as their color.
-
-The position should be specified as 'b', '4' which means that a piece is positioned at B4.
-
-e.g. piece = Pawn(boardObject, 'b', '4', 'white') # where white is the color of the piece
-
-The above statement should initialize a white pawn at b4.
-The board Object should be initialized and passed as a parameter for every piece constructor.
-
 ======================================================================================
